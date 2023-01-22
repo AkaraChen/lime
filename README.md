@@ -9,7 +9,7 @@ import { lime } from '@akrc/lime'
 
 let count = 0
 const emitter = lime()
-const handler = event => (count += event)
+const handler = event => (count + event)
 emitter.subscribe('increment', handler)
 emitter.publish('increment', 2)
 console.log(count) // 2
