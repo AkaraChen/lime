@@ -1,0 +1,27 @@
+{
+  "name": "@akrc/lime",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-akrc": "^1.0.0",
+    "vitest": "^0.27.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "typings": "./index.d.ts"
+}
