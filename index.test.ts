@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { lime } from '.';
+import { lime, Key } from '.';
 
 test('subscribe', () => {
     const emitter = lime();
@@ -27,4 +27,16 @@ test('value', () => {
         expect(event).toBe(114_514);
     });
     emitter.publish('increment', 114_514);
+});
+
+test('wildcard', () => {
+    const emitter = lime();
+    let count = 0;
+    emitter.subscribe('*', (key: Key, event: number) => {
+        expect(key).toBe('increment');
+        expect(event).toBe(2);
+        count += event;
+    });
+    emitter.publish('increment', 2);
+    expect(count).toBe(2);
 });

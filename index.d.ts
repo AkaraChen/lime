@@ -1,13 +1,15 @@
-type Key = string | symbol;
-type WildCard = '*';
-type KeyAndWildCard = Key | WildCard;
-type Handler = (event: any) => void;
+export type Key = string | symbol;
+export type WildCard = '*';
+export type KeyAndWildCard = Key | WildCard;
+export type Handler = (event: any) => void;
+export type WildCardHandler = (key: Key, event: any) => void
 
-type Emitter = {
+export type Emitter = {
     all: Map<Key, Handler>,
-    subscribe(key: KeyAndWildCard, handler: Handler): void,
-    unsubscribe(key: KeyAndWildCard, handler: Handler): void
-    publish(key: Key, value?): void
+    subscribe(key: Key, handler: Handler): void,
+    subscribe(key: WildCard, handler: WildCardHandler): void,
+    unsubscribe(key: KeyAndWildCard, handler: Handler): void,
+    publish(key: Key, value?): void,
 };
 
 export function lime(): Emitter;
